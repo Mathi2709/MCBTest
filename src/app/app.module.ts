@@ -1,15 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserloginComponent } from './userlogin/userlogin.component';
-import { NewbanktransactionComponent } from './newbanktransaction/newbanktransaction.component';
-import { SubmitedtranactionComponent } from './submitedtranaction/submitedtranaction.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MainpageComponent } from './mainpage/mainpage.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -18,19 +16,18 @@ import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
-    UserloginComponent,
-    NewbanktransactionComponent,
-    SubmitedtranactionComponent,
-    MainpageComponent,
+    
   ],
-  imports: [
+  imports: [  
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     RouterModule,
     BrowserAnimationsModule,
-    MatInputModule,
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatIconModule,
     HttpClientModule,
     ToastrModule.forRoot({
       timeOut: 5000,
@@ -40,6 +37,8 @@ import { ToastrModule } from 'ngx-toastr';
     }),
 
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
   providers: [],
   bootstrap: [AppComponent]
 })

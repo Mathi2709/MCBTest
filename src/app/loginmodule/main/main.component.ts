@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-mainpage',
-  templateUrl: './mainpage.component.html',
-  styleUrls: ['./mainpage.component.css']
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css']
 })
-export class MainpageComponent implements OnInit {
+export class MainComponent implements OnInit {
+
   userName:any;
 
   constructor(
@@ -19,18 +20,17 @@ export class MainpageComponent implements OnInit {
     }    
   }
 
-  btnNewClick(){
-    this.router.navigate(['newbanktransaction']);
-  }
-  btnSubmitedClick(){
-    this.router.navigate(['submitedtranaction']);
+  routing(type){
+    if(type == "new"){
+      this.router.navigate(["transactionmodule/newtransaction"]);
+    }else{
+      this.router.navigate(["transactionmodule/submitedtransaction"]);
+    }    
   }
 
   onClickval(){    
-    this.router.navigate(['userlogin']);
+    this.router.navigate(['loginmodule/mylogin']);
   }
-  onClickBack(){
-    this.router.navigate(['userlogin']);
-  }
+ 
 
 }

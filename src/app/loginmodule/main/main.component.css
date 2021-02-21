@@ -17,23 +17,27 @@
 }
 
 .class-new{
-    text-align: center;
-    font-weight: 500;
+     font-weight: 1000;    
+    font-weight: 1000;
     color: black;
+    font-size: 111%;
    
 }
 
 .header {
     padding: 18px;
     text-align: center;
-    background: #eeeeee;
+    background: #c58383;
+    /* background: #eeeeee; */
     color: black;
     font-size: 30px;
   }
 
   .class-cardform{
-    width: 15rem;
-    height: 10rem;
+    width: 20rem;
+    height: 15rem;
+    background: #f7f5f1de;
+
   }
 
   .class-btnclr{
@@ -60,7 +64,23 @@
   .header-left{
     float: left;
   }
+.submited{
+    margin-top: 8%;
+    margin-left: 33%;
+    width: 40%;
 
+}
+
+.newtrans{
+    margin-left: 35%;
+    width: 25%;
+    margin-top: 7%;
+}
+
+.textalign{
+  text-align: center;
+  margin-top: 4%;
+}
 
 
 

@@ -2,7 +2,9 @@
  .header {
     padding: 18px;
     text-align: center;
-    background: #eeeeee;
+    background: #c58383;
+
+    /* background: #eeeeee; */
     color: black;
     font-size: 30px;
   }

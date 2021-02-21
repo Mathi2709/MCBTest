@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpService } from '../http.service';
+import { HttpService } from 'src/app/http.service';
 
 @Component({
-  selector: 'app-submitedtranaction',
-  templateUrl: './submitedtranaction.component.html',
-  styleUrls: ['./submitedtranaction.component.css']
+  selector: 'app-submitedtransaction',
+  templateUrl: './submitedtransaction.component.html',
+  styleUrls: ['./submitedtransaction.component.css']
 })
-export class SubmitedtranactionComponent implements OnInit {
+export class SubmitedtransactionComponent implements OnInit {
+
   userDetails: any=[];
 
   constructor(
@@ -21,7 +22,7 @@ export class SubmitedtranactionComponent implements OnInit {
   }
 
   onClickval(){
-    this.router.navigate(['userlogin']);
+    this.router.navigate(['loginmodule/mylogin']);
   }
 
   onClickBack(){
@@ -36,7 +37,5 @@ export class SubmitedtranactionComponent implements OnInit {
   }  
     })
   }
-
-  
 
 }

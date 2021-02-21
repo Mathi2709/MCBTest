@@ -1,4 +1,10 @@
-.form_container{
+.image{
+    background-image: url("/assets/img.jpg");  
+    overflow-y:auto;
+    height: 630px;
+  }
+
+  .form_container{
     margin : 0 auto;
     width:600px;
  }
@@ -23,6 +29,7 @@
 text-align: center; }
  
  form label {
+   font-family: 'Roboto';
    margin-left: 126px;
     display: inline-block;
     margin-top: 30px;
@@ -39,11 +46,13 @@ text-align: center; }
     left: 2.3em;
     top: -10px;
  }
+
  form input {
+   font-family: 'Roboto';
     display: block;
     width: 50%;
-    margin-left: 126px;
-    padding: 12px 20px;
+    margin-left: 126px;    
+    padding: 9px 20px;
     font-size: 1em;
     border-radius: 3px;
     outline: none;
@@ -94,19 +103,18 @@ text-align: center; }
    color: red;
    font-size: 11px;
    text-align: center;  
-   margin-top: -3%;
+   margin-top: -2%;
  }
-
- /* input[type="checkbox"] {
-   background: red;
-   border: #7f83a2 1px solid;
-} */
+ 
 
 .showpswrd {
-   margin-top: 1%;
+   margin-top: -5%;
    margin-left: 48% !important;
  }
 
+ .formsize{
+   margin-top: 40px;
+ }
  
 
  

@@ -1,7 +1,10 @@
 <div class="header">
     <h1>New Transaction</h1>  
     <div class="header-left">
-      <h3 class="class-backval" (click)="onClickBack()">Back</h3>    
+        <span>
+            <img width="70" alt="centered image" style="    margin-top: -55%;width: 154px;
+            " src="/assets/mcbgroup.jpeg">
+          </span>
     </div>
     <div class="header-right">
       <h3 class="class-logoutval" (click)="onClickval()">Logout</h3>    
@@ -20,7 +23,7 @@
       </div>
       <div class="col-sm-4">
         <label for="custnmbr" class="clss-txtcolor">Customer Number</label>
-        <input type="text" class="form-control" #custnmbr id="custnmbr" formControlName="custnmbr" autocomplete="off" (input)="customerNumberonFocus()" >
+        <input type="text" numbersonly class="form-control" #custnmbr id="custnmbr" formControlName="custnmbr" autocomplete="off" (input)="customerNumberonFocus()" >
       </div>
       <div class="col-sm-4">
         <label for="custname" class="clss-txtcolor">Customer Name</label>
@@ -36,12 +39,18 @@
         </div>
         <div class="col-sm-4">
           <label for="custphnmbr" class="clss-txtcolor">Customer PhoneNumber</label>
-          <input type="tel"  minlength="1" maxlength="10" (input)="onFocus($event)"#custphnmbr autocomplete="off"  class="form-control" id="custphnmbr"  formControlName="custphnmbr">
+          <input #custphnmbr autocomplete="off"  class="form-control" id="custphnmbr"  formControlName="custphnmbr"
+          type="number"
+             min="0"  maxlength="9" 
+            (keydown)="onKeyPresscustDetails($event,'custnumbr')" id="Input" />
           <div class="erromsg" *ngIf="showmsg">PhoneNumber allow numbers only</div>  
         </div>
         <div class="col-sm-4">
           <label for="trnsframnt" class="clss-txtcolor">Transfer Amount</label>
-          <input type="tel"   minlength="1" maxlength="10" (input)="onFocus($event)" autocomplete="off" class="form-control" id="trnsframnt" formControlName="trnsframnt">
+          <input  type="number"
+          min="0"  maxlength="9" 
+         (keydown)="onKeyPresscustDetails($event,'trnsframount')"  autocomplete="off"
+           class="form-control" id="trnsframnt" formControlName="trnsframnt">
           <div class="erromsg" *ngIf="showmsg1">Amount allow numbers only</div>
         </div>
       </div>
@@ -62,7 +71,11 @@
         </div>
         <div class="col-sm-4">
           <label for="benecrybank" class="clss-txtcolor" >Beneficiary Bank</label>
-          <input type="text" class="form-control" id="benecrybank" (input)="onFocus($event)" formControlName="benecrybank" autocomplete="off">
+          <input type="text" class="form-control"
+          min="0"  maxlength="15" 
+         (keydown)="onKeyPressbank($event,'benefcryBankDetails')"  autocomplete="off"
+           class="form-control" 
+          id="benecrybank"  formControlName="benecrybank" >
           <div class="erromsg" *ngIf="showmsg2">Allow characters only</div>
 
         </div>
@@ -76,14 +89,13 @@
       <div class="row">
         <div class="col-sm-4">
             <label for="paymnt" class="clss-txtcolor">Payment Detail</label>
-            <!-- (keypress)="prevent($event)" -->
-            <input type="text" class="form-control" id="paymnt" (input)="onFocus($event)"  formControlName="paymnt" autocomplete="off">
+            <input type="text" class="form-control" id="paymnt"           
+          min="0"  maxlength="15" 
+         (keydown)="onKeyPressbank($event,'paymentDetails')"             
+              formControlName="paymnt" autocomplete="off">
             <div class="erromsg" *ngIf="showmsg3">Allow characters only</div>
-
-          </div>
-         
+          </div>         
           <div  class="col-sm-4 pt-4">           
-            <!-- [disabled]= "!btnSubmit" -->
             <input type="submit" class="btn class-btnclr" value="Submit"  id="btnSubmit">
             <input type="clear" class="btn class-btnclr1" value="Clear" (click)="formreset()">
           </div>    

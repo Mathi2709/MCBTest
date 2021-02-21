@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpService } from '../http.service';
+import { HttpService } from 'src/app/http.service';
+
 
 @Component({
-  selector: 'app-newbanktransaction',
-  templateUrl: './newbanktransaction.component.html',
-  styleUrls: ['./newbanktransaction.component.css']
+  selector: 'app-newtransaction',
+  templateUrl: './newtransaction.component.html',
+  styleUrls: ['./newtransaction.component.css']
 })
-export class NewbanktransactionComponent implements OnInit {
+export class NewtransactionComponent implements OnInit {
+
   userName: any;
   showmsg:boolean ;
   showmsg1:boolean ;
@@ -19,14 +21,13 @@ export class NewbanktransactionComponent implements OnInit {
   btnSubmit:boolean = false ;
   showmsg2:boolean ;
   showmsg3:boolean ;
-
-
-
+  bankDetail: any;
 
   constructor(
     public router:Router,
     public formbuilder:FormBuilder,
     public httpservice:HttpService,
+   
 
   ) { 
     if(JSON.parse(localStorage.getItem(("Username"))) != undefined && JSON.parse(localStorage.getItem("Username"))!=""){
@@ -36,30 +37,29 @@ export class NewbanktransactionComponent implements OnInit {
 
   }
 
-  getCustomerReferencenumbr(){    
+  getCustomerReferencenumbr(){  
     let today = new Date();
     var yr=today.getFullYear();var mnth=today.getMonth()+1;var dt=today.getDate();  
     let val = Math.floor(1000 + Math.random() * 9000);
-    this.customrnmbr = "CUS" + yr+'/'+mnth+'/' + dt+val;
+    this.customrnmbr = "CUS" + yr+mnth+ dt+val;
     }
 
   ngOnInit() {
-    // this.showmsg = false;
-    // this.showmsg1 = false;
-    // this.showmsg2 = false;
-    // this.showmsg3 = false;
-    // this.btnSubmit = false;
+    this.showmsg = false;
+    this.showmsg1 = false;
+    this.showmsg2 = false;
+    this.showmsg3 = false;
     this.bankTranasctionFrm = this.formbuilder.group({   
-      refer:['',Validators.compose([Validators.required])],
+      refer:['',[Validators.required]],
       custnmbr: ['', [Validators.required]],
       custname:['', [Validators.required]],
       custaddr:['', [Validators.required]],
-      custphnmbr:['',[Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      custphnmbr:['',[Validators.required]],
       trnsframnt:['',[Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
       curencySelect:['',[Validators.required]],
-      benecrybank:['',[Validators.required,Validators.pattern(/^[a-zA-Z\s]*$/)]],
+      benecrybank:['',[Validators.required,Validators.pattern(/^[a-zA-Z]*$/)]],
       benecryacntnumbr:['',[Validators.required]],
-      paymnt:['',[Validators.required,Validators.pattern(/^[a-zA-Z\s]*$/)]],
+      paymnt:['',[Validators.required,Validators.pattern(/^[a-zA-Z]*$/)]],
     });  
     this.bankTranasctionFrm.controls['refer'].setValue(this.customrnmbr);
 
@@ -70,42 +70,7 @@ export class NewbanktransactionComponent implements OnInit {
       e.preventDefault();
     }
   }
-
-  onFocus(e){    
-    var h =new RegExp(/^[0-9]{10}$/);  
-    var bankdetail = new RegExp(/^[a-zA-Z\s]*$/);
-    if(!h.test(this.bankTranasctionFrm.value.custphnmbr)){
-      if(this.bankTranasctionFrm.value.custphnmbr ==""){
-        this.showmsg = true;
-      }else{
-        this.showmsg = false;
-      }
-    }else{
-      this.showmsg = false;
-    }
-    if(!h.test(this.bankTranasctionFrm.value.trnsframnt)){
-      if(this.bankTranasctionFrm.value.trnsframnt ==""){
-        this.showmsg1 = true;
-      }else{
-        this.showmsg1 = false;
-      }
-      
-    }else{
-      this.showmsg1 = false;
-    }
-    if(!bankdetail.test(this.bankTranasctionFrm.value.benecrybank)){
-      this.showmsg2 = true;
-    }else{
-      this.showmsg2 = false;
-    }
-    if(!bankdetail.test(this.bankTranasctionFrm.value.paymnt)){
-      this.showmsg3 = true;
-    }else{
-      this.showmsg3 = false;
-    }
-   
-  }
-
+  
   //Mathivathani
   //Method to get customerDetails
 
@@ -139,16 +104,81 @@ export class NewbanktransactionComponent implements OnInit {
    
   }
 
+  onKeyPressbank(params: any,type){
+    this.bankDetail = type;
+    if (params.key === "Backspace" || params.key === "Tab" || params.key === "Tab" || params.key === "Delete" || params.key === "ArrowLeft" || params.key === "ArrowRight" || params.key === "End" || params.key === "Home" || params.key === "Enter" || params.key == "Alt" || params.key == "ArrowUp" || params.key == "ArrowDown" || params.key == "ArrowRight" || params.key == "ArrowLeft") {
+      return true;
+
+    } else if (!this.isKeyPressedNumeric1(params)) {
+      return false;
+    }
+  }
+
+  private isKeyPressedNumeric1(event: any): boolean {
+    if (this.bankDetail == 'benefcryBankDetails') {
+      var inputVal = <HTMLInputElement>document.getElementById("benecrybank");
+    } else if(this.bankDetail == "paymentDetails"){
+      var inputVal = <HTMLInputElement>document.getElementById("paymnt");
+    }
+    var input = inputVal.value;
+    input = input + event.key;
+    if (input.length >= 0) {
+      var txtVal: any = input;
+      if(this.bankDetail == 'benefcryBank'){
+        this.showmsg1= false;
+      }else if(this.bankDetail == "paymentDetails"){
+        this.showmsg3 = false;
+      }      
+
+    }
+    return /^[a-zA-Z]*$/.test(txtVal);
+  }
+
+  onKeyPresscustDetails(params: any,type) {
+    this.custnmbr = type;
+    if (params.key === "Backspace" || params.key === "Tab" || params.key === "Tab" || params.key === "Delete" || params.key === "ArrowLeft" || params.key === "ArrowRight" || params.key === "End" || params.key === "Home" || params.key === "Enter" || params.key == "Alt" || params.key == "ArrowUp" || params.key == "ArrowDown" || params.key == "ArrowRight" || params.key == "ArrowLeft") {
+      return true;
+
+    } else if (!this.isKeyPressedNumeric(params)) {
+      return false;
+    }
+  }
+
+  private isKeyPressedNumeric(event: any): boolean {
+    if (this.custnmbr == 'custnumbr') {
+      var inputVal = <HTMLInputElement>document.getElementById("Input");
+    } else if(this.custnmbr == "trnsframount"){
+      var inputVal = <HTMLInputElement>document.getElementById("trnsframnt");
+    }
+    var input = inputVal.value;
+    input = input + event.key;
+    if (input.length >= 0) {
+      var txtVal: any = input;
+      if(this.custnmbr == 'custnumbr'){
+        this.showmsg= false;
+      }else if(this.custnmbr == "trnsframount"){
+        this.showmsg1 = false;
+      }      
+
+    }
+    return /^((\d{0,9})|(\.{1}\d{1,4}))$/.test(txtVal);
+  }
+
   onClickval(){
-    this.router.navigate(['userlogin']);
+    this.router.navigate(['loginmodule/mylogin']);
   }
 
   onClickBack(){
-    this.router.navigate(['mainpage']);
+    this.router.navigate(['loginmodule/main']);
   }
 
   formreset(){
     this.bankTranasctionFrm.reset();  
+    let today = new Date();
+    var yr=today.getFullYear();var mnth=today.getMonth()+1;var dt=today.getDate();  
+    let val = Math.floor(1000 + Math.random() * 9000);
+    this.customrnmbr = "CUS" + yr+mnth+ dt+val;
+   
   } 
   
    //Method to submit customerDetails
@@ -184,7 +214,7 @@ export class NewbanktransactionComponent implements OnInit {
     this.httpservice.toastr.success('Form submited', '', {
       positionClass: 'toast-top-right', closeButton: true, timeOut: 5000
     });
-        this.router.navigate(["submitedtranaction"]);
+    this.router.navigate(['transactionmodule/submitedtransaction']);
   })
   }else{
     if(this.bankTranasctionFrm.value.custphnmbr == "" ||this.bankTranasctionFrm.value.custphnmbr == undefined ){
@@ -197,10 +227,11 @@ export class NewbanktransactionComponent implements OnInit {
     }  if(this.bankTranasctionFrm.value.paymnt == "" || this.bankTranasctionFrm.value.paymnt == undefined ){
       this.showmsg3 = true;
     } 
-    this.httpservice.toastr.error('Mandatory Fields required', '', {
-      positionClass: 'toast-top-right', closeButton: true, timeOut: 5000
-    });
+    // this.httpservice.toastr.error('Mandatory Fields required', '', {
+    //   positionClass: 'toast-top-right', closeButton: true, timeOut: 5000
+    // });
   }
 
 }
+
 }

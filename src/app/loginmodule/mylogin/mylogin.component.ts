@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpService } from '../http.service';
 import { ToastrService } from 'ngx-toastr';
-
+import { HttpService } from 'src/app/http.service';
 
 @Component({
-  selector: 'app-userlogin',
-  templateUrl: './userlogin.component.html',
-  styleUrls: ['./userlogin.component.css']
+  selector: 'app-mylogin',
+  templateUrl: './mylogin.component.html',
+  styleUrls: ['./mylogin.component.css']
 })
-export class UserloginComponent implements OnInit {
-
+export class MyloginComponent implements OnInit {
   public mainGrp: FormGroup;
   username: any;  
   passwrd: string = "password";
@@ -67,6 +65,7 @@ export class UserloginComponent implements OnInit {
   //Method  to submit loginform
 
   onClickSubmit(){
+    
   if(this.mainGrp.value.username == "" ||this.mainGrp.value.username == undefined ){
     this.showmsg = true;
   }  if(this.mainGrp.value.passwrd == "" || this.mainGrp.value.passwrd == undefined ){
@@ -77,9 +76,8 @@ export class UserloginComponent implements OnInit {
     this.httpservice.toastr.success('Successfully login', '', {
       positionClass: 'toast-top-right', closeButton: true, timeOut: 5000
     });
-    this.router.navigate(["mainpage"]);
-  }   
-  
+    this.router.navigate(["loginmodule/main"]);
+  }  
+}  
+
 }
-}
-  
