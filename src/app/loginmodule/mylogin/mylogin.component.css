@@ -20,7 +20,7 @@
  }
  
  form header {
-    background: #7e7a7a;
+    background: #1f3565;
     padding: 21px 21px;
     color: black;
     font-size: 1.5em;
@@ -76,7 +76,7 @@ text-align: center; }
     transform: translate(-50%, 0);
     font-family: inherit;
     color: black;
-    background: #7e7a7a;
+    background: #1f3565;
     outline: none;
     border: none;
     padding: 7px 26px;
