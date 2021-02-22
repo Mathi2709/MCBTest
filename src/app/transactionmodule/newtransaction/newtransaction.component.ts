@@ -124,8 +124,8 @@ export class NewtransactionComponent implements OnInit {
     input = input + event.key;
     if (input.length >= 0) {
       var txtVal: any = input;
-      if(this.bankDetail == 'benefcryBank'){
-        this.showmsg1= false;
+      if(this.bankDetail == 'benefcryBankDetails'){
+        this.showmsg2= false;
       }else if(this.bankDetail == "paymentDetails"){
         this.showmsg3 = false;
       }      

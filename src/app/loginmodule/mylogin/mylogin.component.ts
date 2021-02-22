@@ -16,6 +16,8 @@ export class MyloginComponent implements OnInit {
   showmsg:boolean ;
   showmsg1:boolean ;
   shwhd: string = "password";
+  userName: string;
+  passWord: string;
   
   constructor(
     public formbuilder:FormBuilder,
@@ -71,13 +73,21 @@ export class MyloginComponent implements OnInit {
   }  if(this.mainGrp.value.passwrd == "" || this.mainGrp.value.passwrd == undefined ){
     this.showmsg1 = true;
   } 
+  this.userName = "user";
+  this.passWord = "abc@123"; 
+  if(this.mainGrp.value.username == this.userName && this.mainGrp.value.passwrd ==this.passWord){ 
   if(this.mainGrp.value.username != "" && this.mainGrp.value.username != undefined && this.mainGrp.value.passwrd != "" && this.mainGrp.value.passwrd != undefined){
     localStorage.setItem("Username",JSON.stringify(this.mainGrp.value.username));
     this.httpservice.toastr.success('Successfully login', '', {
       positionClass: 'toast-top-right', closeButton: true, timeOut: 5000
     });
     this.router.navigate(["loginmodule/main"]);
-  }  
+  }
+  }  else{
+    this.httpservice.toastr.error('Invalid userid and password', '', {
+      positionClass: 'toast-top-right', closeButton: true, timeOut: 5000
+    });
+  }
 }  
 
 }
