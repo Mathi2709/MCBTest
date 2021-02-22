@@ -31,6 +31,10 @@ export class MainComponent implements OnInit {
   onClickval(){    
     this.router.navigate(['loginmodule/mylogin']);
   }
+
+  onClickBack(){
+    this.router.navigate(['loginmodule/mylogin']);
+  }
  
 
 }

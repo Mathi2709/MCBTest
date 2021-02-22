@@ -41,6 +41,7 @@
   .class-backval{
     margin: -129%;
     font-weight: 500;
+    cursor: pointer;
   }
 
   .txtcolor{
@@ -55,6 +56,7 @@
     width: 10%;
     margin-top: -26%;
   margin-left: 67%;
+  cursor: pointer;
 
   }
 
@@ -62,4 +64,19 @@
     width: 10%;
   margin-top: -33%;
   margin-left: 20%;
+  }
+
+  .class-backimg{
+    margin-top: -33%;
+      margin-left: -90%;
+      width: 12%;
+  }
+  
+  
+  .class-backval{
+    font-weight: 500;
+      color: white;
+      margin-top: -27%;
+      margin-left: -185%;
+  
   }

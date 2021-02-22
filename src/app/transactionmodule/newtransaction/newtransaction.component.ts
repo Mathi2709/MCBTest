@@ -44,7 +44,7 @@ export class NewtransactionComponent implements OnInit {
     this.customrnmbr = "CUS" + yr+mnth+ dt+val;
     }
 
-  ngOnInit() {
+  ngOnInit() {   
     this.showmsg = false;
     this.showmsg1 = false;
     this.showmsg2 = false;
@@ -70,6 +70,8 @@ export class NewtransactionComponent implements OnInit {
       e.preventDefault();
     }
   }
+
+  
   
   //Mathivathani
   //Method to get customerDetails
@@ -172,13 +174,11 @@ export class NewtransactionComponent implements OnInit {
     this.router.navigate(['loginmodule/main']);
   }
 
-  formreset(){
-    this.bankTranasctionFrm.reset();  
-    let today = new Date();
-    var yr=today.getFullYear();var mnth=today.getMonth()+1;var dt=today.getDate();  
-    let val = Math.floor(1000 + Math.random() * 9000);
-    this.customrnmbr = "CUS" + yr+mnth+ dt+val;
-   
+  formreset(){    
+    this.bankTranasctionFrm.reset();
+    setTimeout(()=>{
+      this.bankTranasctionFrm.controls['refer'].setValue(this.customrnmbr);
+    })    
   } 
   
    //Method to submit customerDetails

@@ -26,7 +26,7 @@ export class SubmitedtransactionComponent implements OnInit {
   }
 
   onClickBack(){
-    this.router.navigate(['newbanktransaction']);
+    this.router.navigate(['loginmodule/main']);
   }
 
   getSubmitedTransaction(){

@@ -11,20 +11,19 @@
 
   .class-btnclr{
     background: #1f3565;
-    color: black;
-    font-size: 1.2em;
+    color: white;  
     font-weight: 500;
     outline: none !important;
   }
 
   .class-btnclr1{
     background: #1f3565;
-    color: black;
-    font-size: 1.2em;
+    color: white;  
     font-weight: 500;
     outline: none !important;
     margin: 6px;
-    width: 84px
+    width: 84px;
+    cursor: pointer;
   }
 
   #curencySelect{
@@ -70,11 +69,11 @@
     margin-top: -33%;
     margin-left: 20%;
     }
-    .class-backval{
-      margin: -129%;
-      font-weight: 500;
+    /* .class-backval{ */
+      /* margin: -129%; */
+      /* font-weight: 500;
 
-    }
+    } */
 
     .erromsg {
       color: red;
@@ -96,5 +95,22 @@ outline: none !important;
 
 .txtcolor{
   color: white;
+}
+
+.class-backimg{
+  margin-top: -33%;
+    margin-left: -90%;
+    width: 12%;
+    cursor: pointer;
+}
+
+
+.class-backval{
+  font-weight: 500;
+    color: white;
+    margin-top: -27%;
+    margin-left: -55%;
+    cursor: pointer;
+
 }
  
